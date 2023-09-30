@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+// import Header from "./component/Header";
+import HomePage from "./component/Page/Homepage/HomePage";
+import CheckOut from "./component/Page/CheckOut/CheckOut";
+import { Route, Routes } from "react-router-dom";
+import Shared from "./component/Page/Shared/Shared";
+import Login from "./component/Page/LogIn/Login";
+import { useStateValue } from "./component/context/StateProvider";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
 
 function App() {
+const [{},dispatch] = useStateValue()
+
+useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+     if (authUser) {
+        dispatch({
+            type: "SET-USER",
+            user:authUser,
+        })
+     } else {
+        dispatch({
+            type: "SET-USER",
+            user:null,
+        })
+     }
+    })
+},[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<Shared />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="checkout" element={<CheckOut />} />
+        </Route>
+        <Route path="login" element={<Login />} />
+      </Routes>
     </div>
   );
 }

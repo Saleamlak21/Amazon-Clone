@@ -7,7 +7,7 @@ import axios from "../../axios";
 import { useNavigate } from "react-router-dom";
 
 function Payment() {
-  const [{ basket }] = useStateValue();
+  const [{ basket }, dispatch] = useStateValue();
   // -----some variables--------//
   const stripe = useStripe();
   const element = useElements();
@@ -58,6 +58,11 @@ function Payment() {
         setSuceeded(true);
         setError(null);
         setProcessing(false);
+
+        dispatch({
+          type: "CLEAN_BASKET",
+        });
+
         navigate("/orders");
       });
   };

@@ -6,17 +6,17 @@ import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../../../asset/pngimg.com - amazon_PNG11 (2).png";
 import { useStateValue } from "../../context/StateProvider";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../../firebase";
+import { auth } from "../../firebase";
 // import Login from "../LogIn/Login";
 
 function Header() {
   const [{ basket, user }] = useStateValue();
 
-  const handleAuthentication = ( ) => {
+  const handleAuthentication = () => {
     if (user) {
-        auth.signOut();
+      auth.signOut();
     }
-  }
+  };
 
   // console.log(basket)
   return (
@@ -44,22 +44,28 @@ function Header() {
           <SearchIcon className="h-12 m-3" />
         </div>
         <div className="text-white flex  sm:text-xs md:text-sm items-center space-x-6 mx-6 whitespace-nowrap">
-          <Link to={!user && '/login'}>
-            <div onClick={handleAuthentication} className="text-white cursor-pointer ">
-              <p>Hello,{!user ? 'Guest' : user.email}</p>
-              <p className="  font-medium text-sm">{!user ? 'Sign In' : 'Sign Out'}</p>
+          <Link to={!user && "/login"}>
+            <div
+              onClick={handleAuthentication}
+              className="text-white cursor-pointer "
+            >
+              <p>Hello,{!user ? "Guest" : user.email}</p>
+              <p className="  font-medium text-sm">
+                {!user ? "Sign In" : "Sign Out"}
+              </p>
             </div>
           </Link>
-
-          <div className=" cursor-pointer">
-            <p>Returns</p>
-            <p className=" font-medium text-sm">& Orders</p>
-          </div>
+          <Link to={'/orders'}>
+            <div className=" cursor-pointer">
+              <p>Returns</p>
+              <p className=" font-medium text-sm">& Orders</p>
+            </div>
+          </Link>
           <Link to={"checkout"}>
             <div className="flex cursor-pointer">
               <ShoppingBasketIcon className="h-10 w-10 mt-3" />
               <div className="">
-                <p className=" text-sm  ">{basket.length}</p>
+                <p className=" text-sm  ">{basket?.length}</p>
                 <p className=" hidden sm:flex">Basket</p>
               </div>
             </div>

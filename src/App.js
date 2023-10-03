@@ -6,27 +6,35 @@ import Shared from "./component/Page/Shared/Shared";
 import Login from "./component/Page/LogIn/Login";
 import { useStateValue } from "./component/context/StateProvider";
 import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
+// import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./component/firebase";
+import Payment from "./component/Page/Payment/PaymentPage";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import Orders from "./component/Page/Orders/Orders";
+
+const promise = loadStripe(
+  "pk_test_51NwdTnCJhvhzyW5K78bgYHbRm5jpsUMx1lCWu1eHsYMqNeAJdeWJGQCPAwvbaJYwpYevjcj2K3YiDf5itQk6Aw9w00anuFCMG7"
+);
 
 function App() {
-const [{},dispatch] = useStateValue()
+  const [{}, dispatch] = useStateValue();
 
-useEffect(() => {
+  useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-     if (authUser) {
+      if (authUser) {
         dispatch({
-            type: "SET-USER",
-            user:authUser,
-        })
-     } else {
+          type: "SET-USER",
+          user: authUser,
+        });
+      } else {
         dispatch({
-            type: "SET-USER",
-            user:null,
-        })
-     }
-    })
-},[])
+          type: "SET-USER",
+          user: null,
+        });
+      }
+    });
+  }, []);
 
   return (
     <div>
@@ -34,6 +42,15 @@ useEffect(() => {
         <Route path="/" element={<Shared />}>
           <Route path="/" element={<HomePage />} />
           <Route path="checkout" element={<CheckOut />} />
+          <Route path="orders" element={<Orders />} />
+          <Route
+            path="payment"
+            element={
+              <Elements stripe={promise}>
+                <Payment />
+              </Elements>
+            }
+          />
         </Route>
         <Route path="login" element={<Login />} />
       </Routes>

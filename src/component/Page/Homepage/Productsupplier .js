@@ -14,20 +14,6 @@ export default function ProductSupplier() {
   // console.log(products);
   return (
     <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 items-stretch md:-mt-52 z-20 mx-auto">
-      {/* {products.map(({ id, title, price, description, category, image, rating }) => (
-          <div className="my-5">
-            <Item 
-             id={id}
-              title={title}
-              price={price}
-              description={description}
-              catagory={category}
-              image={image}
-              rating={rating}
-            />
-          </div>
-        ))} */}
-
       {products
         .slice(0, 4)
         .map(({ id, title, price, description, category, image, rating }) => (
@@ -77,7 +63,6 @@ export default function ProductSupplier() {
             />
           </div>
         ))}
-
       <div className=" hidden md:flex relative md:col-span-full px-12 mt-7 mx-5">
         <img
           className=" "

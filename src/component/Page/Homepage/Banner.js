@@ -7,10 +7,10 @@ function Banner() {
   return (
   
     <div className=' relative '>
-          <div className=' absolute w-full bg-gradient-to-t from-gray-50 to-transparent h-52 bottom-0 z-10'/> 
+          <div className=' hidden md:flex absolute w-full bg-gradient-to-t from-gray-50 to-transparent h-52 bottom-0 z-10'/> 
         <Carousel
         autoPlay
-       infiniteLoop
+        infiniteLoop
         showStatus={false}
         showIndicators={false}
         showThumbs={false}

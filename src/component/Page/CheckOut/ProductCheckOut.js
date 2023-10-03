@@ -18,11 +18,11 @@ function ProductCheckOut({ id, title, price, description, category, image }) {
   }
 
   return (
-    <div key={id} className="flex flex-grow  m-4 shadow-xl p-3">
-      <div className=" w-2/4 py-4 items-center justify-center ">
+    <div key={id} className="flex flex-grow  m-4 shadow-lg px-9 py-3">
+      <div className=" w-2/5 py-4 items-center justify-center ">
         <img className="h-52  w-52" src={image} />
       </div>
-      <div className=" px-8 w-2/4  items-center justify-center">
+      <div className="  w-2/4  items-center justify-center">
         <p className=" font-normal">{title}</p>
         <strong>${price}</strong>
         <div className="h-5 my-1 text-yellow-500">

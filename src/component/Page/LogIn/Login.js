@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { auth } from "../../../firebase";
+import { auth } from "../../firebase";
 
 function Login() {
   const [email, setEmail] = useState();
@@ -38,7 +38,12 @@ function Login() {
     <div className=" items-center justify-center mx-auto mb-14">
       <div className="m-auto items-center w-96 mb-24 ">
         <Link to={"/"}>
-          <img className="mx-auto -my-8" width={150} objectFit="contain" src={logo} />
+          <img
+            className="mx-auto -my-8"
+            width={150}
+            objectFit="contain"
+            src={logo}
+          />
         </Link>
         <div className="shadow-lg p-6 border-t rounded-md">
           <p className=" text-2xl mb-3 font-medium">Sign-in</p>

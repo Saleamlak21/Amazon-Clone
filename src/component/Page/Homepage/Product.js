@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import { useStateValue } from "../../context/StateProvider";
-// import CurrencyFormat from "react-currency-format";
 
 function Product({ id, title, price, description, catagory, image, width }) {
   const [{ basket }, dispatch] = useStateValue();
-
-  //   console.log(basket)
 
   const max = 5;
   const min = 1;
@@ -25,7 +22,7 @@ function Product({ id, title, price, description, catagory, image, width }) {
       },
     });
   }
-  // console.log(addToBasket)
+
   return (
     <div
       key={id}

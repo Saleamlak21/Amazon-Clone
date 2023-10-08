@@ -7,7 +7,6 @@ import logo from "../../../asset/pngimg.com - amazon_PNG11 (2).png";
 import { useStateValue } from "../../context/StateProvider";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
-// import Login from "../LogIn/Login";
 
 function Header() {
   const [{ basket, user }] = useStateValue();
@@ -18,7 +17,6 @@ function Header() {
     }
   };
 
-  // console.log(basket)
   return (
     <header>
       {/* top header */}
@@ -31,7 +29,7 @@ function Header() {
               objectFit="contain"
               src={logo}
               alt="amzon logo"
-              className=" cursor-pointer"
+              className=" cursor-pointer "
             />
           </div>
         </Link>
@@ -55,7 +53,7 @@ function Header() {
               </p>
             </div>
           </Link>
-          <Link to={'/orders'}>
+          <Link to={"/orders"}>
             <div className=" cursor-pointer">
               <p>Returns</p>
               <p className=" font-medium text-sm">& Orders</p>

@@ -5,10 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 function SubTotal() {
   const [{ basket }, user] = useStateValue();
-  const navigate = useNavigate()
-  //    console.log(basket)
+  const navigate = useNavigate();
 
- const  totalPrice = (basket) =>
+  const totalPrice = (basket) =>
     basket?.reduce((amount, item) => item.price + amount, 0);
 
   return (
@@ -31,7 +30,18 @@ function SubTotal() {
         prefix="$"
       />
       <div className="flex items-center justify-cente">
-        <button onClick={(e) => {navigate('/payment')}}  className="mx-auto button p-12 md:px-24 py-2 my-3">
+        <button
+          onClick={
+            basket.length > 0
+              ? (e) => {
+                  navigate("/payment");
+                }
+              : (e) => {
+                  navigate("/");
+                }
+          }
+          className="mx-auto button p-12 md:px-24 py-2 my-3"
+        >
           Proceed to Checkout
         </button>
       </div>

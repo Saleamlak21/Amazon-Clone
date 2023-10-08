@@ -2,7 +2,6 @@ import React from "react";
 import SubTotal from "./SubTotal";
 import ProductCheckOut from "./ProductCheckOut";
 import { useStateValue } from "../../context/StateProvider";
-// import ProductCheckOut from "./ProductCheckOutl";
 
 function CheckOut() {
   const [{ basket }] = useStateValue();
@@ -22,18 +21,19 @@ function CheckOut() {
           <p className="  pb-1 sm:text-sm-xl md:text-2xl font-medium border-b-2 border-black-400">
             Your Shopping Basket
           </p>
-          {/* <ProductCheckOut/> */}
           <div>
-            {basket.map(({ id, title, price, description, category, image }) => (
-              <ProductCheckOut
-                id={id}
-                image={image}
-                title={title}
-                price={price}
-                description={description}
-                catagory={category}
-              />
-            ))}
+            {basket.map(
+              ({ id, title, price, description, category, image }) => (
+                <ProductCheckOut
+                  id={id}
+                  image={image}
+                  title={title}
+                  price={price}
+                  description={description}
+                  catagory={category}
+                />
+              )
+            )}
           </div>
         </div>
         <SubTotal />

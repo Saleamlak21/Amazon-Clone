@@ -11,7 +11,7 @@ export default function ProductSupplier() {
       })
     );
   }, []);
-  // console.log(products);
+
   return (
     <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 items-stretch md:-mt-52 z-20 mx-auto">
       {products

@@ -1,4 +1,3 @@
-// import Header from "./component/Header";
 import HomePage from "./component/Page/Homepage/HomePage";
 import CheckOut from "./component/Page/CheckOut/CheckOut";
 import { Route, Routes } from "react-router-dom";
@@ -6,7 +5,6 @@ import Shared from "./component/Page/Shared/Shared";
 import Login from "./component/Page/LogIn/Login";
 import { useStateValue } from "./component/context/StateProvider";
 import { useEffect } from "react";
-// import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./component/firebase";
 import Payment from "./component/Page/Payment/PaymentPage";
 import { loadStripe } from "@stripe/stripe-js";

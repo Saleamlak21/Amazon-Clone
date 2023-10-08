@@ -25,7 +25,6 @@ function Login() {
   const creatAccount = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
-      // .then(auth => console.log(auth))
       .then((userCridential) => {
         if (userCridential) {
           navigate("/");

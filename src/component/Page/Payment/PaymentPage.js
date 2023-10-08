@@ -4,10 +4,11 @@ import ProductCheckOut from "../CheckOut/ProductCheckOut";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import axios from "../../axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { db } from "../../firebase";
 
 function Payment() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
   // -----some variables--------//
   const stripe = useStripe();
   const element = useElements();
@@ -55,6 +56,17 @@ function Payment() {
       })
 
       .then(({ paymentIntent }) => {
+        // -------database--------//
+        db.collection("users")
+          .doc(user?.uid)
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            basket: basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
+
         setSuceeded(true);
         setError(null);
         setProcessing(false);
@@ -79,7 +91,9 @@ function Payment() {
       <div className=" flex bg-gray-100 -mx-3  border-b items-center justify-center py-5 border-gray-300">
         <p className=" font-normal text-3xl mx-auto items-center m-auto">
           Checkout ({" "}
-          <span className=" text-fuchsia-400">{basket.length} items</span>){" "}
+          <Link to={"/"}>
+            <span className=" text-fuchsia-400">{basket.length} items</span>){" "}
+          </Link>
         </p>
       </div>
       {/* middle */}

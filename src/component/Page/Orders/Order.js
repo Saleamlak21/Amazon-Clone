@@ -3,11 +3,7 @@ import moment from "moment";
 import CurrencyFormat from "react-currency-format";
 
 function Order({ order }) {
-  {
-    console.log(order.data.basket.length);
-  }
   let product = order.data.basket;
-  console.log(product);
   return (
     <div>
       <div className=" my-5 shadow-xl bg-gray-200">
@@ -25,7 +21,7 @@ function Order({ order }) {
                 <p className="text-xs">{value} - Next day delivery $5.99</p>
               )}
               decimalScale={2}
-              value={order.data.amount}
+              value={order.data.amount /100}
               displayType="text"
               thousandSeparator={true}
               prefix="$"

@@ -109,10 +109,10 @@ function Payment() {
         </div>
       </div>
       {/* items */}
-      <div className="flex  border-b mb-6 pb-6 z-20">
-        <div className="mt-4 mx-12 font-bold sm:text-sm md:text-md lg:text-lg w-36 flex-shrink ">
-          <p className=" ">
-            Review items <br /> and delivery
+      <div className="md:flex border-b mb-6 pb-6 z-20">
+        <div className=" md:flex items-center justify-center mx-auto font-bold sm:text-sm md:text-md lg:text-lg  flex-shrink ">
+          <p className=" md:w-32 m-6 ">
+            Review items and delivery
           </p>
         </div>
         <div className=" flex-grow">
@@ -129,18 +129,18 @@ function Payment() {
         </div>
       </div>
 
-      <div className="flex  border-b mb-6 pb-6 z-20">
-        <div className="mt-4 mx-12 font-bold sm:text-sm md:text-md lg:text-lg w-36 flex-shrink ">
+      <div className="md:flex  border-b mb-6 pb-6 z-20">
+        <div className="mt-4 mx-4 md:mx-12 md:w-36 font-bold sm:text-sm md:text-md lg:text-lg flex-shrink ">
           <p>
-            Payment <br /> Method
+            Payment Method
           </p>
         </div>
         <div className=" flex-grow p-3">
           <form onSubmit={handleSubmit}>
-            <CardElement onChange={handleChange} className="w-1/2" />
+            <CardElement onChange={handleChange} className="w-4/5  lg:w-1/2 my-2 mx-6" />
             <CurrencyFormat
               renderText={(value) => (
-                <div>
+                <div className="font-medium my-1">
                   <p>Order Total: {value}</p>
                 </div>
               )}
@@ -154,7 +154,7 @@ function Payment() {
               disabled={disabled || processing || suceeded || error}
               className={`border ${
                 !disabled ? "button" : "bg-gray-200"
-              }  w-2/4 py-2 mt-3 font-medium `}
+              } w-full md:w-2/4 py-2 mt-3 font-medium `}
             >
               <span>{processing ? "processing" : "Buy Now"}</span>
             </button>
